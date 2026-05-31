@@ -1,0 +1,32 @@
+{
+  "subject": "English",
+  "test_name": "English Test 2",
+  "passage": "Lily planted a flower in her garden. She watered it every day. After a few weeks, the flower bloomed and became beautiful.",
+  "questions": [
+    {
+      "question": "What did Lily plant?",
+      "options": ["Tree", "Flower", "Bush", "Grass"],
+      "answer": "Flower"
+    },
+    {
+      "question": "Where did Lily plant it?",
+      "options": ["Garden", "School", "Park", "House"],
+      "answer": "Garden"
+    },
+    {
+      "question": "What did Lily do every day?",
+      "options": ["Cut it", "Watered it", "Picked it", "Moved it"],
+      "answer": "Watered it"
+    },
+    {
+      "question": "What happened after a few weeks?",
+      "options": ["It disappeared", "It bloomed", "It broke", "It fell"],
+      "answer": "It bloomed"
+    },
+    {
+      "question": "How did the flower become?",
+      "options": ["Small", "Dry", "Beautiful", "Broken"],
+      "answer": "Beautiful"
+    }
+  ]
+}

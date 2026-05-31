@@ -1,0 +1,10 @@
+[project]
+name = "learning-app"
+version = "0.1.0"
+dependencies = [
+    "streamlit",
+    "matplotlib",
+    "plotly",
+    "pandas",
+    "streamlit-autorefresh>=1.0.1",
+]

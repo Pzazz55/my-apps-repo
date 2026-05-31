@@ -1,0 +1,288 @@
+import pandas as pd
+import streamlit as st
+import plotly.graph_objects as go
+
+from utils import load_results
+
+# --------------------------------------------------
+# PAGE CONFIG
+# --------------------------------------------------
+
+st.set_page_config(
+    page_title="Parent Dashboard",
+    page_icon="📊",
+    layout="wide"
+)
+
+st.title("📊 Parent Learning Dashboard")
+
+# --------------------------------------------------
+# LOAD DATA
+# --------------------------------------------------
+
+results = load_results()
+
+if not results:
+    st.warning("No test attempts found yet.")
+    st.stop()
+
+df = pd.DataFrame(results)
+
+# --------------------------------------------------
+# SAFE NORMALIZATION
+# --------------------------------------------------
+
+if "answers" not in df.columns:
+    df["answers"] = [[] for _ in range(len(df))]
+
+df["end_time"] = pd.to_datetime(df.get("end_time", pd.NaT), errors="coerce")
+df = df.dropna(subset=["end_time"])
+
+# --------------------------------------------------
+# DRILL STATE
+# --------------------------------------------------
+
+if "selected_attempt" not in st.session_state:
+    st.session_state.selected_attempt = None
+
+# ==================================================
+# VIEW MODE (DRILL DOWN)
+# ==================================================
+
+if st.session_state.selected_attempt is not None:
+
+    if st.button("⬅ Back"):
+        st.session_state.selected_attempt = None
+        st.rerun()
+
+    attempt = st.session_state.selected_attempt
+
+    st.subheader("📄 Assignment Review")
+
+    completed_dt = pd.to_datetime(attempt.get("end_time")).strftime("%d/%m/%Y %H:%M")
+
+    st.write(f"👦 Student: {attempt.get('student','')}")
+    st.write(f"📘 Subject: {attempt.get('subject','')}")
+    st.write(f"📝 Assignment: {attempt.get('test_name','')}")
+    st.write(f"📊 Score: {attempt.get('score',0)}/{attempt.get('total',0)}")
+    st.write(f"📈 Percentage: {attempt.get('percentage',0)}%")
+    st.write(f"📅 Completed: {completed_dt}")
+
+    st.markdown("---")
+    st.subheader("❓ Question Feedback")
+
+    for i, ans in enumerate(attempt.get("answers", [])):
+
+        question = ans.get("question", "").replace("<b>", "").replace("</b>", "").replace("<br>", "")
+
+        st.markdown(f"""
+        **Q{i+1}: {question}**
+
+        🧒 Your Answer: **{ans.get('selected','')}**  
+        ✅ Correct Answer: **{ans.get('correct','')}**
+
+        {"🟢 Correct" if ans.get("is_correct", False) else "🔴 Wrong"}
+
+        ---
+        """)
+
+    st.stop()
+
+# ==================================================
+# MAIN DASHBOARD FLOW
+# ==================================================
+
+students = sorted(df["student"].unique())
+selected_student = st.selectbox("👦 Select Student", students)
+
+df = df[df["student"] == selected_student]
+
+# Sort oldest → newest first (important for correct numbering)
+df = df.sort_values("end_time", ascending=True)
+
+# Assign attempt numbers in correct chronological order
+df["AttemptNumber"] = (
+    df.groupby(["subject", "test_name"])
+    .cumcount()
+    .add(1)
+)
+
+# Now re-sort back for display (latest first in UI)
+df = df.sort_values("end_time", ascending=False)
+
+df["CompletedDateTime"] = df["end_time"].dt.strftime("%d/%m/%Y %H:%M")
+
+# --------------------------------------------------
+# SUMMARY
+# --------------------------------------------------
+
+avg_score = round(df["percentage"].mean(), 1)
+
+c1, c2 = st.columns(2)
+c1.metric("📚 Assignments", len(df))
+c2.metric("🎯 Avg Score", f"{avg_score}%")
+
+st.markdown("---")
+
+# ==================================================
+# ATTEMPT HISTORY (WITH VIEW BUTTON RESTORED)
+# ==================================================
+
+st.subheader("📋 Attempt History")
+
+header = st.columns([1,2,3,1,1,2,1])
+header[0].markdown("**Attempt**")
+header[1].markdown("**Subject**")
+header[2].markdown("**Assignment**")
+header[3].markdown("**Score**")
+header[4].markdown("**%**")
+header[5].markdown("**Completed**")
+header[6].markdown("**Action**")
+
+for i, row in df.iterrows():
+
+    cols = st.columns([1,2,3,1,1,2,1])
+
+    cols[0].write(row["AttemptNumber"])
+    cols[1].write(row["subject"])
+    cols[2].write(row["test_name"])
+    cols[3].write(row["score"])
+    cols[4].write(f"{row['percentage']}%")
+    cols[5].write(row["CompletedDateTime"])
+
+    if cols[6].button("View", key=f"view_{i}"):
+        st.session_state.selected_attempt = row.to_dict()
+        st.rerun()
+
+# --------------------------------------------------
+# 📅 DATE FILTER
+# --------------------------------------------------
+
+st.markdown("---")
+st.subheader("📅 Analysis Filters")
+
+min_date = df["end_time"].min().date() if not df.empty else None
+max_date = df["end_time"].max().date() if not df.empty else None
+
+if min_date and max_date:
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        from_date = st.date_input("From Date", min_date)
+
+    with col2:
+        to_date = st.date_input("To Date", max_date)
+
+    filtered_df = df[
+        (df["end_time"].dt.date >= from_date) &
+        (df["end_time"].dt.date <= to_date)
+    ]
+
+else:
+    filtered_df = pd.DataFrame()
+
+# --------------------------------------------------
+# EMPTY STATE HANDLING
+# --------------------------------------------------
+
+if filtered_df.empty:
+    st.warning("⚠️ No information available for selected date range.")
+    st.stop()
+
+# ==================================================
+# SUBJECT PERFORMANCE (SIDE BY SIDE PIE CHARTS)
+# ==================================================
+
+st.subheader("📘 Subject Performance (Accuracy)")
+
+col1, col2 = st.columns(2)
+
+for idx, subject in enumerate(["Math", "English"]):
+
+    sub_df = filtered_df[filtered_df["subject"] == subject]
+
+    correct = 0
+    total = 0
+
+    for _, row in sub_df.iterrows():
+        for ans in row.get("answers", []):
+            total += 1
+            if ans.get("is_correct"):
+                correct += 1
+
+    incorrect = total - correct if total > 0 else 0
+
+    fig = go.Figure(data=[go.Pie(
+        labels=["Correct", "Incorrect"],
+        values=[correct, incorrect],
+        hole=0.4
+    )])
+
+    fig.update_layout(title=f"{subject} Accuracy")
+
+    if idx == 0:
+        col1.plotly_chart(fig, use_container_width=True)
+    else:
+        col2.plotly_chart(fig, use_container_width=True)
+
+# ==================================================
+# WEEKLY PROGRESS TREND (LOCKED 0–100 AXIS + CLEAN LABELS)
+# ==================================================
+
+st.subheader("📈 Weekly Progress Trend")
+
+weekly_df = filtered_df.copy()
+
+# Convert to week start
+weekly_df["week"] = weekly_df["end_time"].dt.to_period("W").apply(
+    lambda r: r.start_time
+)
+
+# Group
+weekly = (
+    weekly_df
+    .groupby(["week", "subject"])["percentage"]
+    .mean()
+    .reset_index()
+)
+
+# Pivot
+pivot = weekly.pivot(
+    index="week",
+    columns="subject",
+    values="percentage"
+).fillna(0)
+
+# Clamp values
+pivot = pivot.clip(0, 100)
+
+# ⭐ FIX: format index for display (removes Timestamp label issue)
+pivot.index = pivot.index.strftime("%d-%b-%y")
+
+# Plot
+fig = go.Figure()
+
+for subject in pivot.columns:
+    fig.add_trace(
+        go.Bar(
+            x=pivot.index,
+            y=pivot[subject],
+            name=subject
+        )
+    )
+
+fig.update_layout(
+    title="Weekly Progress Trend",
+    yaxis=dict(
+        range=[0, 100],
+        fixedrange=True
+    ),
+    xaxis=dict(
+        type="category",   # ⭐ prevents auto timestamp formatting
+        fixedrange=True
+    ),
+    barmode="group",
+)
+
+st.plotly_chart(fig, use_container_width=True)

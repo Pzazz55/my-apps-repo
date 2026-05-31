@@ -1,0 +1,33 @@
+{
+  "subject": "English",
+  "test_name": "English Test 1",
+  "timer_minutes": 5  ,
+  "passage": "Tom has a dog named Max. Every day they go to the park. Max likes to run and play.",
+  "questions": [
+    {
+      "question": "What is the dog's name?",
+      "options": ["Tom", "Max", "Sam", "Ben"],
+      "answer": "Max"
+    },
+    {
+      "question": "Where do Tom and Max go?",
+      "options": ["School", "Mall", "Park", "Beach"],
+      "answer": "Park"
+    },
+    {
+      "question": "What does Max like to do?",
+      "options": ["Sleep", "Run and play", "Read", "Swim"],
+      "answer": "Run and play"
+    },
+    {
+      "question": "Who owns Max?",
+      "options": ["Tom", "Sam", "Ben", "John"],
+      "answer": "Tom"
+    },
+    {
+      "question": "How often do they go to the park?",
+      "options": ["Every day", "Once a week", "Never", "Once a month"],
+      "answer": "Every day"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "subject": "Math",
+  "test_name": "Math Assignment - 13",
+  "timer_minutes": 5,
+  "questions": [
+    {
+      "type": "mcq",
+      "question": "Briana collected 84 pieces of candy on Halloween. Her little sister collected 55 pieces of candy. How many pieces of candy do the girls have altogether?",
+      "options": ["139", "140", "141", "142"],
+      "answer": "139"
+    },
+    {
+      "type": "mcq",
+      "question": "An animal shelter has 28 puppies available for adoption. On Tuesday, 7 puppies and 13 kittens are adopted. How many puppies are left at the shelter?",
+      "options": ["31", "14", "15", "21"],
+      "answer": "21"
+    },
+    {
+      "type": "mcq",
+      "question": "Zoe made 39 friendship bracelets and gave 6 away. She then made 10 more friendship bracelets. How many bracelets does Zoe have now?",
+      "options": ["18", "43", "42", "41"],
+      "answer": "43"
+    },
+    {
+      "type": "mcq",
+      "question": "Fill in the blanks: 5, 10, ___, 20, __, 30, 35, 40 ___, ___",
+      "options": ["15, 25, 35, 45", "10, 25, 35, 45", "15, 20, 30, 40", "10, 15, 20, 25"],
+      "answer": "15, 25, 35, 45"
+    },
+    {
+      "type": "mcq",
+      "question": "Amir bakes 24 cookies for the school bake sale. Gia bakes 18 cookies for the school bake sale. Amir and Gia work together and sell all but 5 of their cookies. How many cookies did Amir and Gia sell altogether?",
+      "options": ["37", "38", "39", "40"],
+      "answer": "37"
+    },
+    {
+      "type": "fill",
+      "question": "Julie counts 23 fish in one pond. She counts 13 more fish in another pond. How many fish does Julie count altogether?",
+      "answer": "36"
+    },
+    {  
+      "type": "fill",
+      "question": "Max has 10 crayons on his desk. He finds 15 more crayons inside his desk. How many crayons does Max have altogether?",
+      "answer": "25"
+    }
+
+  ]
+}

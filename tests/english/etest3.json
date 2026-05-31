@@ -1,0 +1,32 @@
+{
+  "subject": "English",
+  "test_name": "English Test 3",
+  "passage": "Jack loves reading books. He visits the library every Saturday. His favorite books are about animals and space.",
+  "questions": [
+    {
+      "question": "What does Jack love doing?",
+      "options": ["Running", "Reading books", "Swimming", "Drawing"],
+      "answer": "Reading books"
+    },
+    {
+      "question": "Where does Jack go every Saturday?",
+      "options": ["Park", "Zoo", "Library", "Mall"],
+      "answer": "Library"
+    },
+    {
+      "question": "What are Jack's favorite books about?",
+      "options": ["Cars", "Sports", "Animals and space", "Food"],
+      "answer": "Animals and space"
+    },
+    {
+      "question": "How often does Jack visit the library?",
+      "options": ["Daily", "Monthly", "Every Saturday", "Never"],
+      "answer": "Every Saturday"
+    },
+    {
+      "question": "Which word best describes Jack?",
+      "options": ["Curious", "Angry", "Lazy", "Sleepy"],
+      "answer": "Curious"
+    }
+  ]
+}

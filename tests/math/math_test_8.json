@@ -1,0 +1,227 @@
+{
+  "subject": "Math",
+  "test_name": "Math Assignment - 8",
+  "timer_minutes": 10,
+  "questions": [
+    {
+      "type": "mcq",
+      "question": "Emma has 30 stickers and gets 9 more stickers. How many stickers does she have now?",
+      "options": [
+        "39",
+        "40",
+        "38",
+        "41"
+      ],
+      "answer": "39"
+    },
+    {
+      "type": "mcq",
+      "question": "Emma has 32 stickers and gets 10 more stickers. How many stickers does she have now?",
+      "options": [
+        "42",
+        "43",
+        "41",
+        "44"
+      ],
+      "answer": "42"
+    },
+    {
+      "type": "mcq",
+      "question": "Emma has 34 stickers and gets 11 more stickers. How many stickers does she have now?",
+      "options": [
+        "45",
+        "46",
+        "44",
+        "47"
+      ],
+      "answer": "45"
+    },
+    {
+      "type": "mcq",
+      "question": "Emma has 36 stickers and gets 12 more stickers. How many stickers does she have now?",
+      "options": [
+        "48",
+        "49",
+        "47",
+        "50"
+      ],
+      "answer": "48"
+    },
+    {
+      "type": "mcq",
+      "question": "Emma has 38 stickers and gets 13 more stickers. How many stickers does she have now?",
+      "options": [
+        "51",
+        "52",
+        "50",
+        "53"
+      ],
+      "answer": "51"
+    },
+    {
+      "type": "mcq",
+      "question": "Emma has 40 stickers and gets 14 more stickers. How many stickers does she have now?",
+      "options": [
+        "54",
+        "55",
+        "53",
+        "56"
+      ],
+      "answer": "54"
+    },
+    {
+      "type": "mcq",
+      "question": "Emma has 42 stickers and gets 15 more stickers. How many stickers does she have now?",
+      "options": [
+        "57",
+        "58",
+        "56",
+        "59"
+      ],
+      "answer": "57"
+    },
+    {
+      "type": "mcq",
+      "question": "Emma has 44 stickers and gets 16 more stickers. How many stickers does she have now?",
+      "options": [
+        "60",
+        "61",
+        "59",
+        "62"
+      ],
+      "answer": "60"
+    },
+    {
+      "type": "mcq",
+      "question": "Emma has 46 stickers and gets 17 more stickers. How many stickers does she have now?",
+      "options": [
+        "63",
+        "64",
+        "62",
+        "65"
+      ],
+      "answer": "63"
+    },
+    {
+      "type": "mcq",
+      "question": "Emma has 48 stickers and gets 18 more stickers. How many stickers does she have now?",
+      "options": [
+        "66",
+        "67",
+        "65",
+        "68"
+      ],
+      "answer": "66"
+    },
+    {
+      "type": "mcq",
+      "question": "Emma has 50 stickers and gets 19 more stickers. How many stickers does she have now?",
+      "options": [
+        "69",
+        "70",
+        "68",
+        "71"
+      ],
+      "answer": "69"
+    },
+    {
+      "type": "mcq",
+      "question": "Emma has 52 stickers and gets 20 more stickers. How many stickers does she have now?",
+      "options": [
+        "72",
+        "73",
+        "71",
+        "74"
+      ],
+      "answer": "72"
+    },
+    {
+      "type": "mcq",
+      "question": "Emma has 54 stickers and gets 21 more stickers. How many stickers does she have now?",
+      "options": [
+        "75",
+        "76",
+        "74",
+        "77"
+      ],
+      "answer": "75"
+    },
+    {
+      "type": "mcq",
+      "question": "Emma has 56 stickers and gets 22 more stickers. How many stickers does she have now?",
+      "options": [
+        "78",
+        "79",
+        "77",
+        "80"
+      ],
+      "answer": "78"
+    },
+    {
+      "type": "mcq",
+      "question": "Emma has 58 stickers and gets 23 more stickers. How many stickers does she have now?",
+      "options": [
+        "81",
+        "82",
+        "80",
+        "83"
+      ],
+      "answer": "81"
+    },
+    {
+      "type": "mcq",
+      "question": "Emma has 60 stickers and gets 24 more stickers. How many stickers does she have now?",
+      "options": [
+        "84",
+        "85",
+        "83",
+        "86"
+      ],
+      "answer": "84"
+    },
+    {
+      "type": "mcq",
+      "question": "Emma has 62 stickers and gets 25 more stickers. How many stickers does she have now?",
+      "options": [
+        "87",
+        "88",
+        "86",
+        "89"
+      ],
+      "answer": "87"
+    },
+    {
+      "type": "mcq",
+      "question": "Emma has 64 stickers and gets 26 more stickers. How many stickers does she have now?",
+      "options": [
+        "90",
+        "91",
+        "89",
+        "92"
+      ],
+      "answer": "90"
+    },
+    {
+      "type": "mcq",
+      "question": "Emma has 66 stickers and gets 27 more stickers. How many stickers does she have now?",
+      "options": [
+        "93",
+        "94",
+        "92",
+        "95"
+      ],
+      "answer": "93"
+    },
+    {
+      "type": "mcq",
+      "question": "Emma has 68 stickers and gets 28 more stickers. How many stickers does she have now?",
+      "options": [
+        "96",
+        "97",
+        "95",
+        "98"
+      ],
+      "answer": "96"
+    }
+  ]
+}

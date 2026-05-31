@@ -1,0 +1,32 @@
+{
+  "subject": "Math",
+  "test_name": "Math Assignment - 12",
+  "timer_minutes": 5,
+  "questions": [
+    {
+      "question": "Tom has 4 apples. He gets 3 more. How many apples does he have now?",
+      "options": ["6", "7", "8", "9"],
+      "answer": "7"
+    },
+    {
+      "question": "Sara has 10 balloons. 2 fly away. How many are left?",
+      "options": ["6", "7", "8", "9"],
+      "answer": "8"
+    },
+    {
+      "question": "There are 5 birds on a tree. 4 more join them. How many birds are there?",
+      "options": ["7", "8", "9", "10"],
+      "answer": "9"
+    },
+    {
+      "question": "A box has 12 crayons. 3 are used. How many remain?",
+      "options": ["8", "9", "10", "11"],
+      "answer": "9"
+    },
+    {
+      "question": "Ben has 6 toy cars and gets 2 more. How many cars does he have?",
+      "options": ["7", "8", "9", "10"],
+      "answer": "8"
+    }
+  ]
+}
